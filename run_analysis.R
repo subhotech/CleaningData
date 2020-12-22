@@ -38,6 +38,22 @@ test <- cbind(testSubjects, testActivities, test)
 combined <- rbind(train, test)
 
 
+# merge datasets
+combined <- rbind(train, test)
+
+# Convert classLabels to activityName basically. More explicit. 
+combined[["Activity"]] <- factor(combined[, Activity]
+                              , levels = activity_labels[["classLabels"]]
+                              , labels = activity_labels[["activityName"]])
+
+combined[["SubjectNum"]] <- as.factor(combined[, SubjectNum])
+
+## Creating the final output file 
+
+data.table::fwrite(x = combined, file = "tidyData.txt", quote = FALSE)
+
+
+
 
 
 
