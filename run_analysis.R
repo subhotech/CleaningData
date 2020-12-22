@@ -13,8 +13,8 @@ unzip("getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",exdir = "data")
 
 
 ##
-activity_labels <-  fread(input = "C:/Users/Subhadeep Sarkar/Documents/data/UCI HAR Dataset/activity_labels.txt", col.names = c("classLabels", "activityName") )
-features <- fread(input = "C:/Users/Subhadeep Sarkar/Documents/data/UCI HAR Dataset/features.txt"  , col.names = c("index", "featureNames"))
+activity_labels <-  fread(input = "C:/Users/SS/Documents/data/UCI HAR Dataset/activity_labels.txt", col.names = c("classLabels", "activityName") )
+features <- fread(input = "C:/Users/SS/Documents/data/UCI HAR Dataset/features.txt"  , col.names = c("index", "featureNames"))
 
 # Data Cleansing 
 featuresWanted <- grep("(mean|std)\\(\\)", features[, featureNames])
@@ -23,15 +23,15 @@ measurements <- gsub('[()]', '', measurements)
 
 
 # Load train datasets
-train <- fread(input = "C:/Users/Subhadeep Sarkar/Documents/data/UCI HAR Dataset/train/X_train.txt")   ###[, featuresWanted, with = FALSE]
-trainActivities <- fread(input = "C:/Users/Subhadeep Sarkar/Documents/data/UCI HAR Dataset/train/Y_train.txt" , col.names = c("Activity"))
-trainSubjects <- fread(input = "C:/Users/Subhadeep Sarkar/Documents/data/UCI HAR Dataset/train/subject_train.txt", col.names = c("SubjectNum"))
+train <- fread(input = "C:/Users/SS/Documents/data/UCI HAR Dataset/train/X_train.txt")   ###[, featuresWanted, with = FALSE]
+trainActivities <- fread(input = "C:/Users/SS/Documents/data/UCI HAR Dataset/train/Y_train.txt" , col.names = c("Activity"))
+trainSubjects <- fread(input = "C:/Users/SS/Documents/data/UCI HAR Dataset/train/subject_train.txt", col.names = c("SubjectNum"))
 train <- cbind(trainSubjects, trainActivities, train)
 
 # Load test datasets
-test <- fread(input = "C:/Users/Subhadeep Sarkar/Documents/data/UCI HAR Dataset/test/X_test.txt")
-testActivities <- fread( input = "C:/Users/Subhadeep Sarkar/Documents/data/UCI HAR Dataset/test/Y_test.txt" , col.names = c("Activity"))
-testSubjects <- fread(input = "C:/Users/Subhadeep Sarkar/Documents/data/UCI HAR Dataset/test/subject_test.txt" , col.names = c("SubjectNum"))
+test <- fread(input = "C:/Users/SS/Documents/data/UCI HAR Dataset/test/X_test.txt")
+testActivities <- fread( input = "C:/Users/SS/Documents/data/UCI HAR Dataset/test/Y_test.txt" , col.names = c("Activity"))
+testSubjects <- fread(input = "C:/Users/SS/Documents/data/UCI HAR Dataset/test/subject_test.txt" , col.names = c("SubjectNum"))
 
 # Merging all datasets 
 test <- cbind(testSubjects, testActivities, test)
